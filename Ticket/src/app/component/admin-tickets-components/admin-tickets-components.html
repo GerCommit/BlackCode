@@ -1,0 +1,30 @@
+<!-- http://localhost:4200/admin/tickets -->
+<h2>Gestión de Tickets</h2>
+
+<table class="tabla-admin">
+  <thead>
+    <tr>
+      <th>ID Ticket</th>
+      <th>ID Usuario</th>
+      <th>Fecha Registro</th>
+      <th>Estado</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    @for (t of tickets; track t.idTicket) {
+      <tr (click)="seleccionar(t)" 
+          [class.seleccionado]="ticketSeleccionado?.idTicket === t.idTicket">
+        <td>TIC_{{ t.idTicket }}</td>
+        <td>USU_{{ t.usuario?.idUsuario }}</td>
+        <td>{{ t.fechaRegistro }}</td>
+        <td>{{ t.estado }}</td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+<div class="acciones">
+  <button (click)="eliminarSeleccionado()">Eliminar Ticket</button>
+  <button (click)="verDetalles()">Ver detalles</button>
+</div>

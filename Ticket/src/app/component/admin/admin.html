@@ -1,0 +1,52 @@
+<div class="admin-container">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <i class="bi bi-ticket-perforated"></i>
+      <span>Sistema eFact</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <ul>
+        <li>
+          <a routerLink="/admin/tickets" routerLinkActive="active">
+            <span class="icon">Tickets</span> Gestionar Tickets
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/admin/usuarios" routerLinkActive="active">
+            <span class="icon">Usuarios</span> Gestion de Usuarios
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/admin/accesos" routerLinkActive="active">
+            <span class="icon">Accesos</span> Ultimos Accesos
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button (click)="onLogout()" class="btn-logout">
+        Cerrar Sesion
+      </button>
+    </div>
+  </aside>
+
+  <main class="main-layout">
+    <header class="top-header">
+      <div class="breadcrumb">
+        <span>Admin</span> / <strong>Panel de Control</strong>
+      </div>
+      <div class="user-info">
+        <span>Administrador</span>
+        <div class="avatar">A</div>
+      </div>
+    </header>
+
+    <section class="content-body">
+      <router-outlet></router-outlet>
+    </section>
+  </main>
+</div>

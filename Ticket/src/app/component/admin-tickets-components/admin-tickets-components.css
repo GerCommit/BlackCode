@@ -1,0 +1,66 @@
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.tabla-admin {
+  width: 90%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.tabla-admin thead {
+  background: #2874a6;
+  color: white;
+}
+
+.tabla-admin th,
+.tabla-admin td {
+  padding: 12px 14px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.tabla-admin tbody tr {
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.tabla-admin tbody tr:hover {
+  background: #eaf2f8;
+}
+
+.seleccionado {
+  background: #aed6f1 !important;
+  font-weight: bold;
+}
+
+.acciones {
+  width: 90%;
+  margin: 25px auto 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.acciones button {
+  background: #212f3c;
+  padding: 12px 22px;
+  border-radius: 6px;
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.acciones button:hover {
+  background: #34495e;
+}

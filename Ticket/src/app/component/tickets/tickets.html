@@ -1,0 +1,99 @@
+<!-- http://localhost:4200/tickets -->
+<div class="header">
+  <div class="user-info">
+    <h5>MENU TICKET</h5>
+  </div>
+        <!-- <button class="btn-volver" (click)="irATienda()">
+            <i class="fas fa-arrow-left"></i> Volver a la Tienda
+        </button> -->
+</div>
+
+<div class="tabs-container">
+  <button 
+    class="tab-btn" 
+    [class.active]="vistaActual === 'pendientes'"
+    (click)="cargarPendientes()">
+    CONSULTAS POR ATENDER
+  </button>
+
+  <button 
+    class="tab-btn" 
+    [class.active]="vistaActual === 'atendidos'"
+    (click)="cargarAtendidos()">
+    CONSULTAS ATENDIDAS
+  </button>
+
+  <button class="new-ticket-btn" (click)="vistaActual = 'nuevo'">
+    + Generar nuevo ticket
+  </button>
+</div>
+
+@if (vistaActual === 'pendientes') {
+  <div class="list-container">
+    <h2 class="section-title">Consultas por atender</h2>
+
+    @for (t of ticketsPendientes; track t.idTicket) {
+      <div class="ticket-card">
+        <div class="ticket-id">TIC_{{ t.idTicket }}</div>
+
+        <div class="ticket-meta">
+          <p><b>Fecha de registro:</b> {{ t.fechaRegistro }}</p>
+          <p><b>Estado:</b> {{ t.estado }}</p>
+        </div>
+
+        <div class="ticket-body">
+          <b>Consulta:</b>
+          <p>{{ t.descripcion }}</p>
+        </div>
+      </div>
+    }
+  </div>
+}
+
+@if (vistaActual === 'atendidos') {
+  <div class="list-container">
+    <h2 class="section-title">Tickets atendidos</h2>
+
+    @for (t of ticketsAtendidos; track t.idTicket) {
+      <div class="ticket-card">
+        <div class="ticket-id">TIC_{{ t.idTicket }}</div>
+
+        <div class="ticket-meta">
+          <p><b>Fecha de registro:</b> {{ t.fechaRegistro }}</p>
+          <p><b>Estado:</b> {{ t.estado }}</p>
+        </div>
+
+        <div class="ticket-body">
+          <b>Consulta:</b>
+          <p>{{ t.descripcion }}</p>
+        </div>
+
+        <p><b>Respuesta de la consulta:</b></p>
+        <p class="respuesta">{{ t.solucion }}</p>
+      </div>
+    }
+  </div>
+}
+
+@if (vistaActual === 'nuevo') {
+  <div class="new-ticket-form">
+    <h2>Generar nuevo ticket</h2>
+
+    <label>Descripción:</label>
+    <textarea [(ngModel)]="nuevoTicket.descripcion"></textarea>
+    <button class="submit-btn" (click)="guardarTicket()">
+      Confirmar nuevo ticket
+    </button>
+  </div>
+}
+
+
+<!-- Por si quieres entrar al modo admin -->
+<div class="admin-access">
+  <button class="admin-btn" (click)="irAdmin()">ADMIN</button>
+</div>
+
+
+
+
+

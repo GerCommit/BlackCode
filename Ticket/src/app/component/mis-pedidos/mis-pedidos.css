@@ -1,0 +1,136 @@
+.mis-pedidos-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.btn-volver {
+  padding: 8px 16px;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-volver:hover {
+  background-color: #5a6268;
+}
+
+.loading, .error-message, .empty-state {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+.error-message {
+  color: #dc3545;
+}
+
+.pedidos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pedido-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pedido-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.pedido-numero {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+}
+
+.pedido-estado {
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.estado-pendiente {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.estado-pagado {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.estado-entregado {
+  background-color: #cce5ff;
+  color: #004085;
+}
+
+.estado-cancelado {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.pedido-info {
+  margin-bottom: 12px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.info-row .label {
+  color: #666;
+}
+
+.info-row .value {
+  font-weight: 500;
+}
+
+.info-row .value.total {
+  color: #28a745;
+  font-size: 18px;
+}
+
+.btn-detalle {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-detalle:hover {
+  background-color: #0056b3;
+}

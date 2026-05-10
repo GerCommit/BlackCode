@@ -1,0 +1,47 @@
+<div class="gestion-container">
+  <div class="header-section">
+    <h2>Ultimos Inicios de Sesion</h2>
+    <p>Consulta el ultimo acceso registrado de cada cliente.</p>
+  </div>
+
+  <div class="status-card" *ngIf="cargando">
+    Cargando accesos...
+  </div>
+
+  <div class="status-card error" *ngIf="!cargando && errorMessage">
+    {{ errorMessage }}
+  </div>
+
+  <div class="status-card empty" *ngIf="!cargando && !errorMessage && clientes.length === 0">
+    No hay clientes registrados para mostrar accesos.
+  </div>
+
+  <div class="table-card" *ngIf="!cargando && !errorMessage && clientes.length > 0">
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Usuario</th>
+          <th>Cliente</th>
+          <th>Correo</th>
+          <th>Estado</th>
+          <th>Ultimo Inicio de Sesion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cliente of clientes">
+          <td>{{ cliente.idUsuario }}</td>
+          <td><strong>{{ cliente.username }}</strong></td>
+          <td>{{ cliente.nombres }} {{ cliente.apellidos }}</td>
+          <td>{{ cliente.email }}</td>
+          <td>
+            <span class="badge" [ngClass]="{ activo: cliente.activo, inactivo: !cliente.activo }">
+              {{ cliente.activo ? 'Activo' : 'Inactivo' }}
+            </span>
+          </td>
+          <td>{{ formatearUltimoAcceso(cliente.ultimaFechaLogin) }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

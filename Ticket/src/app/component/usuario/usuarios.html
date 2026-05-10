@@ -1,0 +1,70 @@
+<div class="gestion-container">
+  <div class="header-section">
+    <h2>Gestión de Usuarios</h2>
+    <p>Administra los accesos y datos de los clientes del sistema.</p>
+  </div>
+
+  <div class="table-card">
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Usuario</th>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let u of usuarios">
+          <td>{{u.idUsuario}}</td>
+          <td><strong>{{u.username}}</strong></td>
+          <td>{{u.nombres}}</td>
+          <td>{{u.apellidos}}</td>
+          <td>
+            <span class="badge" [ngClass]="{'activo': u.activo, 'inactivo': !u.activo}">
+              {{ u.activo ? 'Activo' : 'Inactivo' }}
+            </span>
+          </td>
+          <td class="action-buttons">
+            <button class="btn-icon edit" (click)="editar(u)" title="Editar">✏️</button>
+            
+            <button class="btn-icon" 
+                    [ngClass]="{'delete': u.activo, 'activate': !u.activo}" 
+                    (click)="cambiarEstado(u)" 
+                    [title]="u.activo ? 'Desactivar Acceso' : 'Reactivar Acceso'">
+              {{ u.activo ? '🔴' : '✅' }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="modal-overlay" *ngIf="usuarioSeleccionado">
+    <div class="modal-content">
+      <h3>Editar Usuario</h3>
+      
+      <div class="form-group">
+        <label>Nombres</label>
+        <input type="text" [(ngModel)]="usuarioSeleccionado.nombres" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label>Apellidos</label>
+        <input type="text" [(ngModel)]="usuarioSeleccionado.apellidos" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label>Nueva Contraseña</label>
+        <input type="password" [(ngModel)]="usuarioSeleccionado.passwordHash" class="form-control" placeholder="******">
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-cancel" (click)="cancelarEdicion()">Cancelar</button>
+        <button class="btn-save" (click)="guardarEdicion()">💾 Guardar Cambios</button>
+      </div>
+    </div>
+  </div>
+</div>

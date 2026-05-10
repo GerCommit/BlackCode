@@ -1,0 +1,42 @@
+<div class="mis-pedidos-page">
+  <div class="page-header">
+    <button class="btn-volver" (click)="volver()">Volver</button>
+    <h1>Mis Pedidos</h1>
+  </div>
+
+  @if (loading) {
+    <div class="loading">Cargando pedidos...</div>
+  } @else if (error) {
+    <div class="error-message">{{ error }}</div>
+  } @else if (pedidos.length === 0) {
+    <div class="empty-state">
+      <p>No tienes pedidos realizados.</p>
+    </div>
+  } @else {
+    <div class="pedidos-list">
+      @for (pedido of pedidos; track pedido.idPedido) {
+        <div class="pedido-card">
+          <div class="pedido-header">
+            <span class="pedido-numero">Pedido #{{ pedido.numeroPedido }}</span>
+            <span class="pedido-estado" [class]="getEstadoClass(pedido.estado)">
+              {{ pedido.estado }}
+            </span>
+          </div>
+          <div class="pedido-info">
+            <div class="info-row">
+              <span class="label">Fecha de registro:</span>
+              <span class="value">{{ formatearFecha(pedido.fechaRegistro) }}</span>
+            </div>
+            <div class="info-row">
+              <span class="label">Monto total:</span>
+              <span class="value total">S/ {{ pedido.total.toFixed(2) }}</span>
+            </div>
+          </div>
+          <button class="btn-detalle" (click)="verDetalle(pedido.idPedido)">
+            Ver detalles
+          </button>
+        </div>
+      }
+    </div>
+  }
+</div>

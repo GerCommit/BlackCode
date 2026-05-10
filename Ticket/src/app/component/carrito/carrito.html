@@ -1,0 +1,97 @@
+﻿<div class="carrito-page">
+  <div class="carrito-header">
+    <button class="btn-volver" (click)="volverTienda()">Volver a la tienda</button>
+    <button class="btn-mis-pedidos" routerLink="/mis-pedidos">Mis pedidos</button>
+    <h1>Resumen de Carrito</h1>
+  </div>
+
+  @if (errorMessage) {
+    <div class="error-message">{{ errorMessage }}</div>
+  }
+
+  @if (detalles.length === 0) {
+    <div class="estado-vacio">
+      <p>No tienes productos agregados en tu carrito.</p>
+    </div>
+  } @else {
+    <div class="carrito-layout">
+      <section class="tabla-section">
+        <div class="tabla-wrapper">
+          <table class="carrito-tabla">
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>IGV (18%)</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+                <th></th>
+              </tr>
+            </thead>
+<tbody>
+              @for (item of detalles; track item.idDetalle) {
+                <tr>
+                  <td>{{ item.nombreProducto }}</td>
+                  <td>S/ {{ item.precioUnitario.toFixed(2) }}</td>
+                  <td>S/ {{ (item.subtotal * 0.18 / 1.18).toFixed(2) }}</td>
+                  <td>{{ item.cantidad }}</td>
+                  <td>S/ {{ item.subtotal.toFixed(2) }}</td>
+                  <td>
+                    <button class="btn-eliminar" (click)="eliminar(item.idDetalle)">Eliminar</button>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <aside class="resumen-section">
+        <h2>Registrar Pedido</h2>
+
+        <label for="envio">Direccion de envio</label>
+        <select
+          id="envio"
+          class="input-select"
+          [value]="envioSeleccionadoId ?? ''"
+          (change)="onEnvioChange($any($event.target).value)"
+        >
+          @for (envio of envios; track envio.idInfoEnvio) {
+            <option [value]="envio.idInfoEnvio">
+              {{ envio.direccion }}{{ envio.distrito ? ' - ' + envio.distrito : '' }}{{ envio.ciudad ? ', ' + envio.ciudad : '' }}
+            </option>
+          }
+        </select>
+
+        <label for="metodoPago">Metodo de pago</label>
+        <select
+          id="metodoPago"
+          class="input-select"
+          [value]="metodoPagoSeleccionado"
+          (change)="onMetodoPagoChange($any($event.target).value)"
+        >
+          @for (metodo of metodosPago; track metodo) {
+            <option [value]="metodo">{{ metodo }}</option>
+          }
+        </select>
+
+        <div class="resumen-linea">
+          <span>Subtotal productos</span>
+          <strong>S/ {{ subtotal.toFixed(2) }}</strong>
+        </div>
+        <div class="resumen-linea">
+          <span>IGV total (18%)</span>
+          <strong>S/ {{ igvTotal.toFixed(2) }}</strong>
+        </div>
+        <div class="resumen-linea total">
+          <span>Total a pagar</span>
+          <strong>S/ {{ total.toFixed(2) }}</strong>
+        </div>
+
+<button class="btn-registrar" [disabled]="registeringPedido" (click)="registrarPedido()">
+          {{ registeringPedido ? 'Registrando...' : 'Registrar pedido' }}
+        </button>
+      </aside>
+    </div>
+  }
+</div>

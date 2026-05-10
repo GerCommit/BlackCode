@@ -1,0 +1,65 @@
+<div class="login-container">
+  <div class="login-wrapper">
+    
+    <div class="brand-panel">
+      <div class="brand-content">
+        <div class="brand-logo">
+          <h1>BLACK CODE</h1>
+          <p class="tagline">DESCIFRA TU ESTILO</p>
+        </div>
+        <p class="brand-description">Mantén tu información al día para disfrutar de una experiencia exclusiva.</p>
+      </div>
+    </div>
+
+    <div class="form-panel">
+      <button class="btn-volver" routerLink="/home">
+        <i class="fas fa-arrow-left"></i> Volver a la Tienda
+      </button>
+
+      <div class="form-wrapper" style="margin-top: 20px;">
+        <h2 class="form-title">
+          <i class="fas fa-user-edit"></i> Mi Información
+        </h2>
+
+        <div class="alert alert-danger" *ngIf="errorMessage">
+          <i class="fas fa-exclamation-circle"></i> {{ errorMessage }}
+        </div>
+        <div class="alert alert-success" *ngIf="successMessage">
+          <i class="fas fa-check-circle"></i> {{ successMessage }}
+        </div>
+
+        <form [formGroup]="perfilForm" (ngSubmit)="guardarCambios()">
+          
+          <div class="form-row" style="display: flex; gap: 15px;">
+            <div class="form-group" style="flex: 1;">
+              <label>Nombres</label>
+              <input type="text" formControlName="nombres" class="form-control">
+            </div>
+
+            <div class="form-group" style="flex: 1;">
+              <label>Apellidos</label>
+              <input type="text" formControlName="apellidos" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-phone"></i> Teléfono</label>
+            <input type="tel" formControlName="telefono" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-lock"></i> Nueva Contraseña (Opcional)</label>
+            <input type="password" formControlName="password" class="form-control" placeholder="Déjalo en blanco para mantener la actual">
+          </div>
+
+          <button type="submit" class="btn-primary" [disabled]="loading || perfilForm.invalid">
+            <span *ngIf="!loading"><i class="fas fa-save"></i> Guardar Cambios</span>
+            <span *ngIf="loading"><i class="fas fa-spinner fa-spin"></i> Guardando...</span>
+          </button>
+
+        </form>
+      </div>
+    </div>
+    
+  </div>
+</div>

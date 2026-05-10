@@ -1,0 +1,79 @@
+<div class="pedido-detalle-page">
+  <div class="page-header">
+    <button class="btn-volver" (click)="volver()">Volver a mis pedidos</button>
+  </div>
+
+  @if (loading) {
+    <div class="loading">Cargando detalle...</div>
+  } @else if (error) {
+    <div class="error-message">{{ error }}</div>
+  } @else if (pedido) {
+    <div class="detalle-card">
+      <div class="pedido-header">
+        <h1>Pedido #{{ pedido.numeroPedido }}</h1>
+        <span class="pedido-estado" [class]="getEstadoClass(pedido.estado)">
+          {{ pedido.estado }}
+        </span>
+      </div>
+
+      <div class="seccion">
+        <h3>Información del pedido</h3>
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="label">Fecha de registro:</span>
+            <span class="value">{{ formatearFecha(pedido.fechaRegistro) }}</span>
+          </div>
+          <div class="info-item">
+            <span class="label">Método de pago:</span>
+            <span class="value">{{ pedido.metodoPago }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="seccion">
+        <h3>Dirección de envío</h3>
+        <div class="envio-info">
+          <p><strong>{{ pedido.nombreDestinatario }}</strong></p>
+          <p>{{ pedido.direccion }}{{ pedido.distrito ? ', ' + pedido.distrito : '' }}{{ pedido.ciudad ? ', ' + pedido.ciudad : '' }}</p>
+        </div>
+      </div>
+
+      <div class="seccion">
+        <h3>Productos</h3>
+        <table class="productos-tabla">
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (detalle of pedido.detalles; track detalle.idDetalle) {
+              <tr>
+                <td>{{ detalle.nombreProducto }}</td>
+                <td>S/ {{ detalle.precioUnitario.toFixed(2) }}</td>
+                <td>{{ detalle.cantidad }}</td>
+                <td>S/ {{ detalle.subtotal.toFixed(2) }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <div class="seccion total-section">
+        <div class="total-row">
+          <span>Total a pagar:</span>
+          <span class="total-amount">S/ {{ pedido.total.toFixed(2) }}</span>
+        </div>
+      </div>
+
+      @if (puedeCancelar) {
+        <button class="btn-cancelar" [disabled]="cancelando" (click)="cancelarPedido()">
+          {{ cancelando ? 'Cancelando...' : 'Cancelar pedido' }}
+        </button>
+      }
+    </div>
+  }
+</div>

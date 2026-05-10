@@ -1,0 +1,26 @@
+<h2>Detalle del Ticket</h2>
+
+<div class="detalle-container" *ngIf="ticket">
+
+  <button class="btn-atras" (click)="volver()">
+    ⬅ Volver
+  </button>
+
+  <p><b>ID Ticket:</b> {{ ticket.idTicket }}</p>
+
+  <p><b>Descripción del cliente:</b></p>
+  <p class="cliente-box">{{ ticket.descripcion }}</p>
+
+  <ng-container *ngIf="ticket.solucion">
+    <p><b>Respuesta del administrador (registrada):</b></p>
+    <p class="admin-box">{{ ticket.solucion }}</p>
+  </ng-container>
+
+  <label>Escribir solución del administrador:</label>
+  <textarea [(ngModel)]="solucion"></textarea>
+
+  <button class="btn-confirmar" (click)="confirmarSolucion()">
+    Confirmar solución
+  </button>
+
+</div>

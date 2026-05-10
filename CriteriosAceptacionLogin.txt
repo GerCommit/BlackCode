@@ -1,0 +1,60 @@
+Modulo Login
+
+CA1: Dado que el usuario completa el formulario con datos válidos, cuando confirma el registro, entonces se crea la cuenta exitosamente.
+CA2: Dado que el usuario ingresa datos incompletos o inválidos, cuando intenta registrarse, entonces el sistema muestra un mensaje de error.
+CA3: Dado que el usuario se registra correctamente, cuando finaliza el proceso, entonces el sistema confirma el registro y permite iniciar sesión.
+CA4: Dado que el usuario ingresa credenciales válidas, cuando inicia sesión, entonces accede correctamente al e-commerce.
+CA5: Dado que el usuario ingresa credenciales incorrectas, cuando intenta iniciar sesión, entonces el sistema muestra un mensaje de error.
+CA6: Dado que el usuario deja campos vacíos, cuando intenta iniciar sesión, entonces el sistema solicita completar los campos.
+CA7: Dado que el usuario inicia sesión como administrador, cuando el sistema valida su rol, entonces es redirigido al panel de administrador.
+CA8: Dado que el usuario inicia sesión como cliente, cuando el sistema valida su rol, entonces es redirigido a la tienda del e-commerce.
+CA9: Dado que el usuario ha iniciado sesión en el e-commerce, cuando hace clic en Cerrar Sesión, entonces el sistema finaliza la sesión.
+CA10: Dado que el usuario ha cerrado sesión, cuando intenta acceder a una página protegida, entonces el sistema lo redirige al login.
+CA11: Dado que el usuario se registra o actualiza su contraseña, cuando el sistema recibe la contraseña, entonces la encripta antes de almacenarla.
+CA12: Dado que la contraseña ha sido almacenada, cuando se consulta en la base de datos, entonces no se muestra en texto plano.
+CA13: Dado que el usuario solicita recuperar su contraseña, cuando ingresa un correo válido registrado, entonces el sistema envía un enlace de recuperación.
+CA14: Dado que el usuario recibe el enlace de recuperación, cuando accede al enlace, entonces el sistema permite  establecer una nueva contraseña.
+CA15: Dado que el usuario ingresa una nueva contraseña válida, cuando confirma el cambio, entonces el sistema actualiza la contraseña correctamente.
+CA16: Dado que el usuario tiene permisos para una ruta, cuando intenta acceder, entonces el sistema le permite el acceso.
+CA17: Dado que el usuario no tiene permisos para una ruta, cuando intenta acceder, entonces el sistema deniega el acceso.
+CA18: Dado que el usuario intenta acceder a una ruta no autorizada, cuando el sistema valida su rol, entonces lo redirige a una ruta permitida o al login.
+CA19: Dado que el usuario ingresa credenciales incorrectas, cuando intenta iniciar sesión, entonces el sistema muestra un mensaje de error.
+CA20: Dado que el cliente accede a su perfil, cuando actualiza sus datos con información válida, entonces el sistema guarda los datos 
+CA21: Dado que el cliente ingresa datos inválidos o incompletos, cuando intenta guardar los cambios, entonces el sistema muestra mensajes de error.
+CA22: Dado que el cliente ha actualizado sus datos, cuando el sistema procesa la solicitud, entonces refleja los cambios en su perfil.
+CA23: Dado que el administrador accede al módulo de clientes, cuando el sistema carga la información, entonces muestra la lista de clientes registrados.
+CA24: Dado que existen clientes registrados, cuando se visualiza la lista, entonces se muestra cada cliente con sus datos, rol, y opciones de editar y deshabilitar. 
+CA25: Dado que no existen clientes registrados, cuando el administrador accede al módulo, entonces el sistema muestra un mensaje indicando que no hay datos.
+CA26: Dado que el administrador selecciona deshabilitar una cuenta, cuando confirma la acción, entonces el sistema cambia el estado de la cuenta a inactiva.
+CA27: Dado que el administrador selecciona habilitar una cuenta, cuando confirma la acción, entonces el sistema cambia el estado de la cuenta a activa.
+CA28: Dado que una cuenta está deshabilitada, cuando el cliente intenta iniciar sesión, entonces el sistema deniega el acceso.
+CA29: Dado que el usuario ha iniciado sesión, cuando permanece inactivo durante 30 minutos, entonces el sistema expira la sesión automáticamente.
+CA30: Dado que la sesión ha expirado, cuando el usuario intenta interactuar con el sistema, entonces se le redirige al login.
+CA31: Dado que el usuario mantiene actividad dentro del sistema, cuando interactúa antes de los 30 minutos, entonces el sistema reinicia el contador de inactividad.
+CA32: Dado que el usuario ha iniciado sesión, cuando el sistema carga la interfaz, entonces muestra el nombre del usuario
+CA33: Dado que el usuario no ha iniciado sesión, cuando accede a la interfaz, entonces no se muestra información de identidad
+CA34: Dado que el usuario cierra sesión, cuando el sistema actualiza la interfaz, entonces elimina la visualización del nombre.
+CA35: Dado que el usuario está autenticado, cuando ingresa su contraseña actual  y una nueva válida, entonces el sistema actualiza la contraseña.
+CA36: Dado que el usuario ingresa una contraseña actual incorrecta, cuando intenta actualizarla, entonces el sistema muestra un mensaje de error.
+CA37: Dado que el usuario ingresa una nueva contraseña inválida, cuando intenta guardarla, entonces el sistema valida y muestra errores.
+CA38: Dado que el usuario inicia sesión, cuando el sistema valida el acceso, entonces registra la fecha y hora del inicio de sesión.
+CA39: Dado que existen registros de inicio de sesión, cuando el usuario consulta su historial, entonces el sistema muestra la lista de accesos.
+CA40: Dado que no existen registros de inicio de sesión, cuando el usuario accede al historial, entonces el sistema muestra un mensaje de lista vacía.
+CA41: Dado que el cliente ingresa al e-commerce, cuando accede a la página principal, entonces el sistema carga el catálogo de productos.
+CA42: Dado que el catálogo de productos se carga, cuando el sistema muestra los productos, entonces se visualizan con nombre, imagen y precio.
+CA43: Dado que el catálogo está disponible, cuando el cliente navega en la página principal, entonces puede visualizar todos los productos sin aplicar filtros. 
+CA44: Dado que el cliente se encuentra en el catálogo de productos, cuando selecciona un filtro predefinido, entonces el sistema muestra los productos correspondientes a ese tipo ordenados por precio de mayor a menor.
+CA45: Dado que el cliente se encuentra en el catálogo de productos, cuando selecciona el filtro de productos destacados, entonces el sistema muestra productos dentro de un rango de precio definido.
+CA46:Dado que el cliente aplica un filtro, cuando no existen productos que cumplan con el criterio seleccionado, entonces el sistema muestra un mensaje informativo.
+CA47: ado que el administrador está en el módulo de productos, cuando ingresa el nombre del producto válido, entonces el sistema muestra los productos que coinciden con ese nombre.
+CA48: Dado que el administrador está en el módulo de productos, cuando ingresa un código de producto válido, entonces el sistema muestra el producto correspondiente a ese código.
+CA49: Dado que el administrador realiza una búsqueda, cuando no existen coincidencias en la base de datos, entonces el sistema muestra un mensaje informativo.
+CA50:
+CA51:
+
+
+
+
+
+
+
