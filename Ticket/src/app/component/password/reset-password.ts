@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UsuarioService } from '../usuario/usuario.service';
+import { AuthService } from '../../service/auth-service';
 
 @Component({
   selector: 'app-reset-password',
@@ -24,10 +25,17 @@ export class ResetPasswordComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
+    if (this.authService.isAuthenticated() && 
+        this.authService.hasAnyRole(['ADMINISTRADOR'])) {
+      this.router.navigate(['/admin']);
+      return;
+    }
+
     // Extraemos el token de la URL: ?token=xxxx-xxxx
     this.route.queryParams.subscribe(params => {
       this.token = params['token'];

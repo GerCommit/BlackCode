@@ -162,10 +162,11 @@
                                formControlName="username"
                                class="form-control" 
                                placeholder="Ej: ghosar123"
-                               [class.is-invalid]="registroForm.get('username')?.invalid && registroForm.get('username')?.touched">
+                               [class.is-invalid]="registroForm.get('username')?.touched && registroForm.get('username')?.invalid && registroForm.get('username')?.value"
+                               [class.is-valid]="registroForm.get('username')?.valid && registroForm.get('username')?.touched && registroForm.get('username')?.dirty">
                         <div class="invalid-feedback" 
                              *ngIf="registroForm.get('username')?.invalid && registroForm.get('username')?.touched">
-                            Username debe tener entre 3 y 50 caracteres
+                            {{ getUsernameError() }}
                         </div>
                     </div>
 
@@ -178,10 +179,11 @@
                                formControlName="email"
                                class="form-control" 
                                placeholder="tu@email.com"
-                               [class.is-invalid]="registroForm.get('email')?.invalid && registroForm.get('email')?.touched">
+                               [class.is-invalid]="registroForm.get('email')?.touched && registroForm.get('email')?.invalid && registroForm.get('email')?.value"
+                               [class.is-valid]="registroForm.get('email')?.valid && registroForm.get('email')?.touched && registroForm.get('email')?.dirty">
                         <div class="invalid-feedback" 
                              *ngIf="registroForm.get('email')?.invalid && registroForm.get('email')?.touched">
-                            Email inválido
+                            {{ getEmailError() }}
                         </div>
                     </div>
 
@@ -195,7 +197,12 @@
                                    formControlName="nombres"
                                    class="form-control" 
                                    placeholder="Juan"
-                                   [class.is-invalid]="registroForm.get('nombres')?.invalid && registroForm.get('nombres')?.touched">
+                                   [class.is-invalid]="registroForm.get('nombres')?.touched && registroForm.get('nombres')?.invalid && registroForm.get('nombres')?.value"
+                                   [class.is-valid]="registroForm.get('nombres')?.valid && registroForm.get('nombres')?.touched && registroForm.get('nombres')?.dirty">
+                            <div class="invalid-feedback" 
+                                 *ngIf="registroForm.get('nombres')?.invalid && registroForm.get('nombres')?.touched">
+                                {{ getNombresError() }}
+                            </div>
                         </div>
                         <div class="form-group col-6">
                             <label style="color: white;">Apellidos *</label>
@@ -203,7 +210,12 @@
                                    formControlName="apellidos"
                                    class="form-control" 
                                    placeholder="Pérez"
-                                   [class.is-invalid]="registroForm.get('apellidos')?.invalid && registroForm.get('apellidos')?.touched">
+                                   [class.is-invalid]="registroForm.get('apellidos')?.touched && registroForm.get('apellidos')?.invalid && registroForm.get('apellidos')?.value"
+                                   [class.is-valid]="registroForm.get('apellidos')?.valid && registroForm.get('apellidos')?.touched && registroForm.get('apellidos')?.dirty">
+                            <div class="invalid-feedback" 
+                                 *ngIf="registroForm.get('apellidos')?.invalid && registroForm.get('apellidos')?.touched">
+                                {{ getApellidosError() }}
+                            </div>
                         </div>
                     </div>
 
@@ -212,11 +224,16 @@
                         <label style="color: white;">
                             <i class="fas fa-phone"></i> Teléfono *
                         </label>
-                        <input type="tel" 
-                               formControlName="telefono"
-                               class="form-control" 
-                               placeholder="987654321"
-                               [class.is-invalid]="registroForm.get('telefono')?.invalid && registroForm.get('telefono')?.touched">
+<input type="tel" 
+                                   formControlName="telefono"
+                                   class="form-control" 
+                                   placeholder="987654321"
+                                   [class.is-invalid]="registroForm.get('telefono')?.touched && registroForm.get('telefono')?.invalid && registroForm.get('telefono')?.value"
+                                   [class.is-valid]="registroForm.get('telefono')?.valid && registroForm.get('telefono')?.touched && registroForm.get('telefono')?.dirty">
+                            <div class="invalid-feedback" 
+                                 *ngIf="registroForm.get('telefono')?.invalid && registroForm.get('telefono')?.touched">
+                                {{ getTelefonoError() }}
+                            </div>
                     </div>
 
                     <!-- Contraseña -->
@@ -228,13 +245,19 @@
                             <input [type]="showRegPassword ? 'text' : 'password'"
                                    formControlName="password"
                                    class="form-control" 
-                                   placeholder="Mínimo 6 caracteres"
-                                   [class.is-invalid]="registroForm.get('password')?.invalid && registroForm.get('password')?.touched">
+                                   placeholder="Mínimo 10 caracteres con letras, números y special"
+                                   [class.is-invalid]="registroForm.get('password')?.touched && registroForm.get('password')?.invalid && registroForm.get('password')?.value"
+                                   [class.is-valid]="registroForm.get('password')?.valid && registroForm.get('password')?.touched && registroForm.get('password')?.dirty">
                             <button type="button" 
                                     class="toggle-password" 
                                     (click)="togglePassword('reg')">
                                 <i [class]="showRegPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
                             </button>
+                            <div class="invalid-feedback" 
+                                 *ngIf="registroForm.get('password')?.invalid && registroForm.get('password')?.touched">
+                                {{ getPasswordError() }}
+                            </div>
+                            
                         </div>
                     </div>
 
@@ -248,7 +271,8 @@
                                    formControlName="passwordConfirm"
                                    class="form-control" 
                                    placeholder="Repite tu contraseña"
-                                   [class.is-invalid]="(registroForm.get('passwordConfirm')?.invalid || registroForm.hasError('passwordMismatch')) && registroForm.get('passwordConfirm')?.touched">
+                                   [class.is-invalid]="(registroForm.get('passwordConfirm')?.touched && registroForm.get('passwordConfirm')?.invalid && registroForm.get('passwordConfirm')?.value) || (registroForm.touched && registroForm.hasError('passwordMismatch'))"
+                                   [class.is-valid]="registroForm.get('passwordConfirm')?.valid && registroForm.get('passwordConfirm')?.touched && registroForm.get('passwordConfirm')?.dirty">
                             <button type="button" 
                                     class="toggle-password" 
                                     (click)="togglePassword('regConfirm')">

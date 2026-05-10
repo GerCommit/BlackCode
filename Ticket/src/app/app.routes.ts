@@ -16,7 +16,7 @@ import { UsuariosComponent } from './component/usuario/usuarios';
 import { AuthGuard } from './guard/auth.guard';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: Login },
   {
     path: 'admin',
@@ -31,7 +31,7 @@ export const routes: Routes = [
       { path: 'detalle/:id', component: AdminTicketsDetalleComponents },
     ],
   },
-  { path: 'home', component: HomeComponents, canActivate: [AuthGuard], data: { roles: ['CLIENTE'] } },
+  { path: 'home', component: HomeComponents },
   { path: 'tickets', component: Tickets, canActivate: [AuthGuard], data: { roles: ['CLIENTE'] } },
   { path: 'carrito', component: Carrito, canActivate: [AuthGuard], data: { roles: ['CLIENTE'] } },
   { path: 'mis-pedidos', component: MisPedidos, canActivate: [AuthGuard], data: { roles: ['CLIENTE'] } },

@@ -79,6 +79,7 @@ header {
     font-weight: 500;
     position: relative;
     transition: color 0.3s;
+    cursor: pointer;
 }
 
 .nav-menu a::after {

@@ -3,10 +3,11 @@ import { Ticket } from '../../model/ticket';
 import { TicketsService } from '../../service/tickets-service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-tickets',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './tickets.html',
   styleUrl: './tickets.css',
 })
@@ -62,7 +63,4 @@ export class Tickets implements OnInit{
       error: () => alert("Error al registrar ticket")
     });
   }
-  irAdmin() {
-    window.location.href = '/admin/tickets';
   }
-}

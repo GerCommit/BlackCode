@@ -1,0 +1,7 @@
+Username: Minimo 6 caracteres entre letras y numero no null, máximo 20 caracteres.
+Email: máximo 100 caracteres entre letras, números, guion medio y bajo; luego del @ debe existir un dominio existente como: Gmail.com, Hotmail.com, outlook.com, etc.
+nombre y apellido: mínimo 3 caracteres solo letras, máximo 200 caracteres solo letras, no se permite null, espacios sin caracteres y no se permite 2 o mas espacios seguidos.
+teléfono: solo números, máximo 8 y mínimo 8 dígitos.
+contraseña: máximo 50 caracteres entre letras y números con caracteres especiales. mínimo son 10 caracteres.
+
+sugiere si faltan mas.

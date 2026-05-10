@@ -1,27 +1,30 @@
 <div class="admin-container">
   <aside class="sidebar">
     <div class="sidebar-header">
-      <i class="bi bi-ticket-perforated"></i>
-      <span>Sistema eFact</span>
+      <i class="fas fa-gem"></i>
+      <span>BLACK CODE</span>
     </div>
 
     <nav class="sidebar-nav">
       <ul>
         <li>
           <a routerLink="/admin/tickets" routerLinkActive="active">
-            <span class="icon">Tickets</span> Gestionar Tickets
+            <span class="icon"><i class="fas fa-ticket-alt"></i></span>
+            <span>Gestionar Tickets</span>
           </a>
         </li>
 
         <li>
           <a routerLink="/admin/usuarios" routerLinkActive="active">
-            <span class="icon">Usuarios</span> Gestion de Usuarios
+            <span class="icon"><i class="fas fa-users"></i></span>
+            <span>Gestión de Usuarios</span>
           </a>
         </li>
 
         <li>
           <a routerLink="/admin/accesos" routerLinkActive="active">
-            <span class="icon">Accesos</span> Ultimos Accesos
+            <span class="icon"><i class="fas fa-clock"></i></span>
+            <span>Últimos Accesos</span>
           </a>
         </li>
       </ul>
@@ -29,7 +32,8 @@
 
     <div class="sidebar-footer">
       <button (click)="onLogout()" class="btn-logout">
-        Cerrar Sesion
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Cerrar Sesión</span>
       </button>
     </div>
   </aside>

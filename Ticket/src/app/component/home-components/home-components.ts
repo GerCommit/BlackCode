@@ -38,6 +38,11 @@ export class HomeComponents implements OnInit {
     if (usuario) {
       this.usuarioActual = usuario;
       this.idUsuario = usuario.idUsuario ?? 0;
+
+      if (this.authService.hasAnyRole(['ADMINISTRADOR'])) {
+        this.router.navigate(['/admin']);
+        return;
+      }
     }
 
     this.cargarProductos();
