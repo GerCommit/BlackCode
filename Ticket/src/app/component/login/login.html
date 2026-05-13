@@ -85,11 +85,10 @@
                         <input type="text" 
                                formControlName="username"
                                class="form-control" 
-                               placeholder="Ingresa tu email o usuario"
+                               placeholder="Ingrese tu usuario"
                                [class.is-invalid]="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
                         <div class="invalid-feedback" 
                              *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
-                            Usuario debe tener al menos 3 caracteres
                         </div>
                     </div>
 

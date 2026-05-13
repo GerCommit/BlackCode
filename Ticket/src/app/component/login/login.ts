@@ -16,8 +16,8 @@ function usernameValidator(): ValidatorFn {
     if (!/^[a-zA-Z0-9]+$/.test(value)) {
       return { usernameInvalid: 'Solo letras y números sin espacios' };
     }
-    if (value.length < 6 || value.length > 20) {
-      return { usernameLength: 'Mínimo 6 y máximo 20 caracteres' };
+    if (value.length < 3 || value.length > 50) {
+      return { usernameLength: 'Mínimo 3 y máximo 50 caracteres' };
     }
     return null;
   };
@@ -62,8 +62,8 @@ function telefonoValidator(): ValidatorFn {
     if (!/^[0-9]+$/.test(value)) {
       return { telefonoSoloNumeros: 'Solo se permiten números' };
     }
-    if (value.length !== 8) {
-      return { telefonoLength: 'Debe tener exactamente 8 dígitos' };
+    if (value.length !== 9) {
+      return { telefonoLength: 'Debe tener exactamente 9 dígitos' };
     }
     return null;
   };
@@ -73,8 +73,8 @@ function passwordValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const value = control.value;
     if (!value) return null;
-    if (value.length < 10 || value.length > 50) {
-      return { passwordLength: 'Mínimo 10 y máximo 50 caracteres' };
+    if (value.length < 6 || value.length > 50) {
+      return { passwordLength: 'Mínimo 6 y máximo 50 caracteres' };
     }
     if (!/[a-zA-Z]/.test(value)) {
       return { passwordLetter: 'Debe contener al menos una letra' };
@@ -141,8 +141,8 @@ export class Login implements OnInit {
 
   initForms(): void {
     this.loginForm = this.formBuilder.group({
-      username: ['', [Validators.required, Validators.minLength(6)]],
-      password: ['', [Validators.required, Validators.minLength(10)]],
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]],
       recordarme: [false],
     });
 
@@ -296,13 +296,7 @@ export class Login implements OnInit {
     });
   }
 
-  irATienda(): void {
-    if (this.authService.isAuthenticated()) {
-      this.router.navigate([this.authService.getRedirectRouteForCurrentUser()]);
-    } else {
-      this.router.navigate(['/home']);
-    }
-  }
+  
 
 irATienda(): void {
     if (this.authService.isAuthenticated()) {
@@ -366,5 +360,5 @@ irATienda(): void {
     if (control?.hasError('passwordSpecial')) return control.getError('passwordSpecial');
     return 'Contraseña inválida';
   }
-  }
+  
 }
