@@ -304,6 +304,14 @@ export class Login implements OnInit {
     }
   }
 
+irATienda(): void {
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate([this.authService.getRedirectRouteForCurrentUser()]);
+    } else {
+      this.router.navigate(['/home']);
+    }
+  }
+
   getUsernameError(): string {
     const control = this.registroForm.get('username');
     if (control?.hasError('required')) return 'El username es obligatorio';
@@ -357,5 +365,6 @@ export class Login implements OnInit {
     if (control?.hasError('passwordNumber')) return control.getError('passwordNumber');
     if (control?.hasError('passwordSpecial')) return control.getError('passwordSpecial');
     return 'Contraseña inválida';
+  }
   }
 }

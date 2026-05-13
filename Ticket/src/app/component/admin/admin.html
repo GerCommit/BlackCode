@@ -1,30 +1,30 @@
 <div class="admin-container">
   <aside class="sidebar">
     <div class="sidebar-header">
-      <i class="fas fa-gem"></i>
-      <span>BLACK CODE</span>
+      <i class="bi bi-ticket-perforated"></i>
+      <span>Sistema BlackCode</span>
     </div>
 
     <nav class="sidebar-nav">
       <ul>
         <li>
           <a routerLink="/admin/tickets" routerLinkActive="active">
-            <span class="icon"><i class="fas fa-ticket-alt"></i></span>
-            <span>Gestionar Tickets</span>
+            <i class="bi bi-ticket-detailed icon"></i>
+            Gestionar Tickets
           </a>
         </li>
 
         <li>
           <a routerLink="/admin/usuarios" routerLinkActive="active">
-            <span class="icon"><i class="fas fa-users"></i></span>
-            <span>Gestión de Usuarios</span>
+            <i class="bi bi-people icon"></i>
+            Gestion de Usuarios
           </a>
         </li>
 
         <li>
           <a routerLink="/admin/accesos" routerLinkActive="active">
-            <span class="icon"><i class="fas fa-clock"></i></span>
-            <span>Últimos Accesos</span>
+            <i class="bi bi-clock-history icon"></i>
+            Ultimos Accesos
           </a>
         </li>
       </ul>
@@ -32,8 +32,8 @@
 
     <div class="sidebar-footer">
       <button (click)="onLogout()" class="btn-logout">
-        <i class="fas fa-sign-out-alt"></i>
-        <span>Cerrar Sesión</span>
+        <i class="bi bi-box-arrow-right"></i>
+        Cerrar Sesion
       </button>
     </div>
   </aside>
@@ -44,8 +44,8 @@
         <span>Admin</span> / <strong>Panel de Control</strong>
       </div>
       <div class="user-info">
-        <span>Administrador</span>
-        <div class="avatar">A</div>
+        <span>{{ nombreCompleto }}</span>
+        <div class="avatar">{{ nombreAdmin }}</div>
       </div>
     </header>
 
